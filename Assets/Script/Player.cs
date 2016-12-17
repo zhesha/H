@@ -12,8 +12,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		
-		if (Input.GetButtonDown("Jump") && onGround) {
+		if (Input.GetButton("Jump") && onGround) {
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
