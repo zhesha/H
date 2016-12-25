@@ -63,7 +63,9 @@ public class DeathBlock : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
-			Destroy (other);
+			Player player = (Player)other.gameObject.GetComponent(typeof(Player));
+			player.death ();
+			//Destroy (other);
 		}
 	}
 }

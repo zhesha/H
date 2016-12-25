@@ -1,9 +1,0 @@
-<linker>
-<assembly fullname="Assembly-CSharp">
-<type fullname="DeathBlock" preserve="all"/>
-<type fullname="DeathBlockController" preserve="all"/>
-<type fullname="GameControlle" preserve="all"/>
-<type fullname="Player" preserve="all"/>
-<type fullname="ScrollBG" preserve="all"/>
-</assembly>
-</linker>

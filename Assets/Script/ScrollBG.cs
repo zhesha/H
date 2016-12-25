@@ -5,12 +5,16 @@ public class ScrollBG : MonoBehaviour {
 
 	public float speed;
 	public float size;
+	public float destroyTime;
 
 	private Vector3 startPosition;
 
 	// Use this for initialization
 	void Start () {
 		startPosition = transform.position;
+		if (destroyTime != 0) {
+			Destroy (gameObject, destroyTime);
+		}
 	}
 	
 	// Update is called once per frame

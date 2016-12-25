@@ -4,11 +4,13 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	private Rigidbody2D rb;
+	private Animator animator;
 	private bool onGround = false;
 	public float jumpVelocity;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
 	}
 
 	void FixedUpdate () {
@@ -23,5 +25,15 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other) {
 		onGround = false;
+	}
+
+	public void death () {
+		
+		animator.SetBool("dead", true);
+
+		int deathHash = Animator.StringToHash("death");
+		animator.SetTrigger (deathHash);
+
+		//Debug.Log ("asdf");
 	}
 }
