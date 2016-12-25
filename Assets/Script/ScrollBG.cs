@@ -19,7 +19,9 @@ public class ScrollBG : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float newPosition = Mathf.Repeat (Time.time * speed, size);
-		transform.position = startPosition + Vector3.left * newPosition;
+		if (speed != 0) {
+			float newPosition = Mathf.Repeat (Time.time * speed, size);
+			transform.position = startPosition + Vector3.left * newPosition;
+		}
 	}
 }

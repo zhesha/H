@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	private bool onGround = false;
 	public float jumpVelocity;
+	public GameControlle gameControlle;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
@@ -33,7 +34,8 @@ public class Player : MonoBehaviour {
 
 		int deathHash = Animator.StringToHash("death");
 		animator.SetTrigger (deathHash);
+		Destroy (gameObject, 1);
 
-		//Debug.Log ("asdf");
+		gameControlle.gameOver ();
 	}
 }

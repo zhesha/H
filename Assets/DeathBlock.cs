@@ -52,12 +52,23 @@ public class DeathBlock : MonoBehaviour {
 			type = 0;
 			transform.position = transform.position + Vector3.right * 0.5f;
 		}
+		if (type == 6) {
+			type = 0;
+			transform.position = transform.position + Vector3.up * 0.5f;
+		}
+		if (type == 7) {
+			type = 2;
+			transform.position = transform.position + Vector3.right * 0.5f;
+		}
 	}
 
 	public void setType (int initType) {
 		type = initType;
 		if (initType == 3) {
 			transform.position = transform.position + Vector3.up * 0.5f;
+		}
+		if (initType == 6) {
+			transform.position = transform.position + Vector3.down * 0.5f;
 		}
 	}
 
