@@ -54,9 +54,13 @@ public class DeathBlock : MonoBehaviour {
 		}
 		if (type == 6) {
 			type = 0;
-			transform.position = transform.position + Vector3.up * 0.5f;
+			//transform.position = transform.position + Vector3.right * 0.5f;
 		}
 		if (type == 7) {
+			type = 0;
+			transform.position = transform.position + Vector3.up * 0.5f;
+		}
+		if (type == 8) {
 			type = 2;
 			transform.position = transform.position + Vector3.right * 0.5f;
 		}
@@ -67,7 +71,7 @@ public class DeathBlock : MonoBehaviour {
 		if (initType == 3) {
 			transform.position = transform.position + Vector3.up * 0.5f;
 		}
-		if (initType == 6) {
+		if (initType == 7) {
 			transform.position = transform.position + Vector3.down * 0.5f;
 		}
 	}
