@@ -54,7 +54,6 @@ public class DeathBlock : MonoBehaviour {
 		}
 		if (type == 6) {
 			type = 0;
-			//transform.position = transform.position + Vector3.right * 0.5f;
 		}
 		if (type == 7) {
 			type = 0;
@@ -80,7 +79,6 @@ public class DeathBlock : MonoBehaviour {
 		if (other.tag == "Player") {
 			Player player = (Player)other.gameObject.GetComponent(typeof(Player));
 			player.death ();
-			//Destroy (other);
 		}
 	}
 }
