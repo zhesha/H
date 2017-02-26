@@ -22,10 +22,14 @@ public class DeathBlock : MonoBehaviour {
 	}
 
 	bool triggerCondition () {
-		if (type == 4 && transform.position.x - player.transform.position.x < 2.5f) {
+		if (type == 1) {
+			Debug.logger.Log (transform.position.x - player.transform.position.x);
+		}
+
+		if (type == 4 && transform.position.x - player.transform.position.x < 3.5f) {
 			return true;
 		}
-		if (transform.position.x - player.transform.position.x < 1) {
+		if (transform.position.x - player.transform.position.x < 2) {
 			return true;
 		}
 		return false;
