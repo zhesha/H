@@ -5,8 +5,8 @@
       <File FileName="Assets/Script/DeathBlockController.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Player.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/ScrollBG.cs" Line="1" Column="1" />
-      <File FileName="Assets/DeathBlock.cs" Line="74" Column="20" />
-      <File FileName="Assets/Script/GameControlle.cs" Line="20" Column="26" />
+      <File FileName="Assets/DeathBlock.cs" Line="74" Column="13" />
+      <File FileName="Assets/Script/GameControlle.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
