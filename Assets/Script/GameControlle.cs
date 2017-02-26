@@ -5,11 +5,24 @@ public class GameControlle : MonoBehaviour {
 
 	public ScrollBG background;
 	public ScrollBG parallax;
+	public StartGUI startText;
 	public DeathBlockController deathBlockController;
 
+	private bool isStarted = false;
+
+	void FixedUpdate () {
+		if (!isStarted && Input.GetButton("Jump")) {
+			isStarted = true;
+			background.init ();
+			parallax.init ();
+			deathBlockController.init ();
+			startText.init ();
+		}
+	}
+
 	public void gameOver () {
-		background.speed = 0;
-		parallax.speed = 0;
+		background.stop();
+		parallax.stop();
 		deathBlockController.stop ();
 
 		GameObject[] deathBlocks = GameObject.FindGameObjectsWithTag("deathBlock");

@@ -6,10 +6,12 @@ public class DeathBlockController : MonoBehaviour {
 
 	public DeathBlock deathBlock;
 	public float spawnWait;
-	public float blocksNumber;
+	public float initialBlocksNumber;
+	private float blocksNumber;
 	private int currBlockType = 0;
 
-	void Start () {
+	public void init () {
+		blocksNumber = initialBlocksNumber;
 		StartCoroutine (Spawn ());
 	}
 

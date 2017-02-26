@@ -6,8 +6,8 @@ public class StartGUI : ScrollBG {
 	public float destroyTime;
 
 	// Use this for initialization
-	void Start () {
-		base.Start ();
+	public void init () {
+		base.init ();
 		Destroy (gameObject, destroyTime);
 	}
 }
