@@ -6,13 +6,16 @@ public class GameControlle : MonoBehaviour {
 	public ScrollBG background;
 	public ScrollBG parallax;
 	public StartGUI startText;
+	public Player player;
 	public DeathBlockController deathBlockController;
 
 	private bool isStarted = false;
 
-	void FixedUpdate () {
+	void Update () {
 		if (!isStarted && Input.GetButton("Jump")) {
+			Debug.logger.Log (11);
 			isStarted = true;
+			player.reset ();
 			background.init ();
 			parallax.init ();
 			deathBlockController.init ();
@@ -24,6 +27,7 @@ public class GameControlle : MonoBehaviour {
 		background.stop();
 		parallax.stop();
 		deathBlockController.stop ();
+		startText.reset ();
 
 		GameObject[] deathBlocks = GameObject.FindGameObjectsWithTag("deathBlock");
 
@@ -32,5 +36,15 @@ public class GameControlle : MonoBehaviour {
 			db.speed = 0;
 			Destroy (deathBlock, 1);
 		}
+
+
+		StartCoroutine (deferredGameOver ());
+	}
+
+	IEnumerator deferredGameOver ()
+	{
+		yield return new WaitForSeconds (1);
+
+		isStarted = false;
 	}
 }

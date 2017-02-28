@@ -6,25 +6,32 @@ public class ScrollBG : MonoBehaviour {
 	public float speed;
 	public float size;
 
-	private float currentSpeed = 0;
-	private Vector3 startPosition;
+	protected float currentSpeed = 0;
+	protected Vector3 startPosition;
 	private float time;
+	private float stopTime;
 
 	// Use this for initialization
 	public void init () {
 		currentSpeed = speed;
-		startPosition = transform.position;
+		if (startPosition == Vector3.zero) {
+			startPosition = transform.position;
+		}
 		time = Time.time;
 	}
 
 	public void stop () {
+		if (currentSpeed != 0) {
+			stopTime = stopTime + Time.time - time;
+		}
 		currentSpeed = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (currentSpeed != 0) {
-			float newPosition = Mathf.Repeat (-(time - Time.time) * speed, size);
+			float t = stopTime + Time.time - time;
+			float newPosition = Mathf.Repeat (t * speed, size);
 			transform.position = startPosition + Vector3.left * newPosition;
 		}
 	}

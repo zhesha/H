@@ -28,13 +28,20 @@ public class Player : MonoBehaviour {
 		onGround = false;
 	}
 
+	public void reset () {
+		animator.SetBool("dead", false);
+
+		int deathHash = Animator.StringToHash("DudeAnimation");
+		animator.SetTrigger (deathHash);
+	}
+
 	public void death () {
 		
 		animator.SetBool("dead", true);
 
 		int deathHash = Animator.StringToHash("death");
 		animator.SetTrigger (deathHash);
-		Destroy (gameObject, 1);
+		//Destroy (gameObject, 1);
 
 		gameControlle.gameOver ();
 	}

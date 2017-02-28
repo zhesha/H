@@ -11,6 +11,7 @@ public class DeathBlockController : MonoBehaviour {
 	private int currBlockType = 0;
 
 	public void init () {
+		currBlockType = 0;
 		blocksNumber = initialBlocksNumber;
 		StartCoroutine (Spawn ());
 	}
