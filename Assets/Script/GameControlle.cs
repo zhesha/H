@@ -13,7 +13,6 @@ public class GameControlle : MonoBehaviour {
 
 	void Update () {
 		if (!isStarted && Input.GetButton("Jump")) {
-			Debug.logger.Log (11);
 			isStarted = true;
 			player.reset ();
 			background.init ();
@@ -43,8 +42,8 @@ public class GameControlle : MonoBehaviour {
 
 	IEnumerator deferredGameOver ()
 	{
-		yield return new WaitForSeconds (1);
-
+		yield return new WaitForSeconds (3);
+		Debug.logger.Log (222);
 		isStarted = false;
 	}
 }

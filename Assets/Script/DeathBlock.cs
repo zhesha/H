@@ -11,9 +11,7 @@ public class DeathBlock : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//float newPosition = Mathf.Repeat (Time.time * speed, size);
 		Destroy (gameObject, lifetime);
-		//Vector3 position = 
 		transform.position = transform.position + Vector3.left * speed;
 		if (type != 0 && triggerCondition()) {
 			action ();

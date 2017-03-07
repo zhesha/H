@@ -8,7 +8,6 @@ public class StartGUI : ScrollBG {
 	// Use this for initialization
 	public void init () {
 		base.init ();
-		//Destroy (gameObject, destroyTime);
 		StartCoroutine (deferredStop ());
 	}
 

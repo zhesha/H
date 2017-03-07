@@ -6,6 +6,9 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Animator animator;
 	private bool onGround = false;
+	private bool isAlive = false;
+
+
 	public float jumpVelocity;
 	public GameControlle gameControlle;
 
@@ -15,7 +18,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (Input.GetButton("Jump") && onGround) {
+		if (isAlive && Input.GetButton("Jump") && onGround) {
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
@@ -33,15 +36,22 @@ public class Player : MonoBehaviour {
 
 		int deathHash = Animator.StringToHash("DudeAnimation");
 		animator.SetTrigger (deathHash);
+
+		StartCoroutine (deferredReset ());
+	}
+
+	IEnumerator deferredReset ()
+	{
+		yield return new WaitForSeconds (0.3f);
+		isAlive = true;
 	}
 
 	public void death () {
-		
+		isAlive = false;
 		animator.SetBool("dead", true);
 
 		int deathHash = Animator.StringToHash("death");
 		animator.SetTrigger (deathHash);
-		//Destroy (gameObject, 1);
 
 		gameControlle.gameOver ();
 	}
