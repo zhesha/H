@@ -11,17 +11,20 @@ public class DeathBlockController : MonoBehaviour {
 	private int currBlockType = 0;
 	public GameControlle gameControlle;
 
+	private IEnumerator coroutine;
+
+
 	public void init () {
 		currBlockType = 0;
 		blocksNumber = initialBlocksNumber;
-		StartCoroutine (Spawn ());
+		coroutine = Spawn ();
+		StartCoroutine (coroutine);
 	}
 
 	IEnumerator Spawn ()
 	{
 		for (int i = 0; i < blocksNumber; i++)
 		{
-			
 			DeathBlock db = (DeathBlock)Instantiate (deathBlock, transform.position, Quaternion.identity);
 			currBlockType += 1;
 			db.setType(currBlockType);
@@ -31,6 +34,7 @@ public class DeathBlockController : MonoBehaviour {
 	}
 
 	public void stop () {
+		StopCoroutine (coroutine);
 		blocksNumber = 0;
 	}
 }
