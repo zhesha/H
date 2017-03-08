@@ -9,6 +9,7 @@ public class DeathBlockController : MonoBehaviour {
 	public float initialBlocksNumber;
 	private float blocksNumber;
 	private int currBlockType = 0;
+	public GameControlle gameControlle;
 
 	public void init () {
 		currBlockType = 0;
@@ -24,6 +25,7 @@ public class DeathBlockController : MonoBehaviour {
 			DeathBlock db = (DeathBlock)Instantiate (deathBlock, transform.position, Quaternion.identity);
 			currBlockType += 1;
 			db.setType(currBlockType);
+			db.gameControlle = gameControlle;
 			yield return new WaitForSeconds (spawnWait);
 		}
 	}

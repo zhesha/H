@@ -8,8 +8,11 @@ public class GameControlle : MonoBehaviour {
 	public StartGUI startText;
 	public Player player;
 	public DeathBlockController deathBlockController;
+	public GameObject scoreText;
+	public GameObject winText;
 
 	private bool isStarted = false;
+	private int doneBlockCount = 0;
 
 	void Update () {
 		if (!isStarted && Input.GetButton("Jump")) {
@@ -42,8 +45,18 @@ public class GameControlle : MonoBehaviour {
 
 	IEnumerator deferredGameOver ()
 	{
-		yield return new WaitForSeconds (3);
-		Debug.logger.Log (222);
+		yield return new WaitForSeconds (1);
 		isStarted = false;
+	}
+
+	public void doneBlock () {
+		doneBlockCount++;
+		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
+		if (deathBlockController.initialBlocksNumber <= doneBlockCount) {
+			winText.GetComponent<Renderer>().enabled = true;
+			background.stop();
+			parallax.stop();
+			deathBlockController.stop ();
+		}
 	}
 }

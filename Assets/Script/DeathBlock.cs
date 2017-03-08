@@ -8,15 +8,26 @@ public class DeathBlock : MonoBehaviour {
 	public GameObject player;
 	public Sprite deadlySprite;
 	public int type = 0;
+	public GameControlle gameControlle;
+
+	private bool isDone = false;
 
 	// Update is called once per frame
 	void Update () {
 		Destroy (gameObject, lifetime);
 		transform.position = transform.position + Vector3.left * speed;
+		checkDone ();
 		if (type != 0 && triggerCondition()) {
 			action ();
 		}
 
+	}
+
+	void checkDone () {
+		if (!isDone && transform.position.x - player.transform.position.x < 1.2f) {
+			isDone = true;
+			gameControlle.doneBlock ();
+		}
 	}
 
 	bool triggerCondition () {
