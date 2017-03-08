@@ -17,6 +17,8 @@ public class GameControlle : MonoBehaviour {
 	void Update () {
 		if (!isStarted && Input.GetButton("Jump")) {
 			isStarted = true;
+			doneBlockCount = 0;
+			scoreText.GetComponent<TextMesh>().text = "Score: 0";
 			player.reset ();
 			background.init ();
 			parallax.init ();
