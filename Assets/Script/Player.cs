@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
 	private bool onGround = false;
 	private bool isAlive = false;
 
-
 	public float jumpVelocity;
 	public GameControlle gameControlle;
 
@@ -54,5 +53,10 @@ public class Player : MonoBehaviour {
 		animator.SetTrigger (deathHash);
 
 		gameControlle.gameOver ();
+	}
+
+	public float position () {
+		Debug.logger.Log(transform.localPosition);
+		return transform.position.x;
 	}
 }

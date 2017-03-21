@@ -34,6 +34,7 @@ public class DeathBlock : MonoBehaviour {
 		if (type == 4 && transform.position.x - player.transform.position.x < 3.5f) {
 			return true;
 		}
+		
 		if (transform.position.x - player.transform.position.x < 2) {
 			return true;
 		}
