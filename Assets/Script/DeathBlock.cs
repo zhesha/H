@@ -5,7 +5,7 @@ public class DeathBlock : MonoBehaviour {
 
 	public float speed;
 	public float lifetime;
-	public GameObject player;
+	public Player player;
 	public Sprite deadlySprite;
 	public int type = 0;
 	public GameControlle gameControlle;
@@ -34,7 +34,7 @@ public class DeathBlock : MonoBehaviour {
 		if (type == 4 && transform.position.x - player.transform.position.x < 3.5f) {
 			return true;
 		}
-		
+
 		if (transform.position.x - player.transform.position.x < 2) {
 			return true;
 		}

@@ -7,6 +7,7 @@ public class DeathBlockController : MonoBehaviour {
 	public DeathBlock deathBlock;
 	public float spawnWait;
 	public float initialBlocksNumber;
+	public Player player;
 	private float blocksNumber;
 	private int currBlockType = 0;
 	public GameControlle gameControlle;
@@ -29,6 +30,7 @@ public class DeathBlockController : MonoBehaviour {
 			currBlockType += 1;
 			db.setType(currBlockType);
 			db.gameControlle = gameControlle;
+			db.player = player;
 			yield return new WaitForSeconds (spawnWait);
 		}
 	}
