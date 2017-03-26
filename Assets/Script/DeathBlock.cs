@@ -24,18 +24,18 @@ public class DeathBlock : MonoBehaviour {
 	}
 
 	void checkDone () {
-		if (!isDone && transform.position.x - player.transform.position.x < 1.2f) {
+		if (!isDone && transform.position.x - player.transform.position.x < -1f) {
 			isDone = true;
 			gameControlle.doneBlock ();
 		}
 	}
 
 	bool triggerCondition () {
-		if (type == 4 && transform.position.x - player.transform.position.x < 3.5f) {
+		if (type == 4 && transform.position.x - player.transform.position.x < 2f) {
 			return true;
 		}
 
-		if (transform.position.x - player.transform.position.x < 2) {
+		if (transform.position.x - player.transform.position.x < 1) {
 			return true;
 		}
 		return false;
