@@ -19,12 +19,17 @@ public class GameControlle : MonoBehaviour {
 	private float canvasWidth = 1;
 	private float canvasHeight = 1;
 
+	private IEnumerator gameOverCoroutine;
+
 	void Start() {
 		canvasHeight = cameraSize;
 		canvasWidth = (float)Screen.width / (float)Screen.height * cameraSize;
 
 		float grounfSize = ground.GetComponent<BoxCollider2D> ().bounds.size.y / 2;
-		float groundOffset = canvasHeight * 0.8f;
+		float groundOffset = canvasHeight * 0.5f;
+		if (grounfSize * 2 + groundOffset < cameraSize) {
+			groundOffset = canvasHeight - grounfSize * 2;
+		}
 		ground.transform.position += Vector3.down * (grounfSize + groundOffset);
 
 		float deathBlockSize = 0.2f;
@@ -44,8 +49,7 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!isStarted && Input.GetButton("Jump")) {
-			
+		if (!isStarted && (Input.GetButton("Jump") || Input.touchCount > 0)) {
 			isStarted = true;
 			doneBlockCount = 0;
 			scoreText.GetComponent<TextMesh>().text = "Score: 0";
@@ -70,9 +74,12 @@ public class GameControlle : MonoBehaviour {
 			db.speed = 0;
 			Destroy (deathBlock, 1);
 		}
-
-
-		StartCoroutine (deferredGameOver ());
+	
+		if (gameOverCoroutine != null) {
+			StopCoroutine (gameOverCoroutine);
+		}
+		gameOverCoroutine = deferredGameOver ();
+		StartCoroutine (gameOverCoroutine);
 	}
 
 	IEnumerator deferredGameOver ()

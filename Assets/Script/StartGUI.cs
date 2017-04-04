@@ -5,10 +5,13 @@ public class StartGUI : ScrollBG {
 
 	public float destroyTime;
 
+	private IEnumerator stopCoroutine;
+
 	// Use this for initialization
 	public void init () {
 		base.init ();
-		StartCoroutine (deferredStop ());
+		stopCoroutine = deferredStop ();
+		StartCoroutine (stopCoroutine);
 	}
 
 	IEnumerator deferredStop ()
@@ -19,13 +22,14 @@ public class StartGUI : ScrollBG {
 	}
 
 	public void reset () {
+		StopCoroutine (stopCoroutine);
 		StartCoroutine (deferredReset ());
 	}
 
 	IEnumerator deferredReset ()
 	{
 		yield return new WaitForSeconds (1);
-
+		currentSpeed = 0;
 		transform.position = startPosition;
 	}
 }

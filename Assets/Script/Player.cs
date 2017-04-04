@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (isAlive && Input.GetButton("Jump") && onGround) {
+		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
@@ -46,17 +46,18 @@ public class Player : MonoBehaviour {
 	}
 
 	public void death () {
-		isAlive = false;
-		animator.SetBool("dead", true);
+		if (isAlive) {
+			isAlive = false;
+			animator.SetBool ("dead", true);
 
-		int deathHash = Animator.StringToHash("death");
-		animator.SetTrigger (deathHash);
+			int deathHash = Animator.StringToHash ("death");
+			animator.SetTrigger (deathHash);
 
-		gameControlle.gameOver ();
+			gameControlle.gameOver ();
+		}
 	}
 
 	public float position () {
-		Debug.logger.Log(transform.localPosition);
 		return transform.position.x;
 	}
 }
