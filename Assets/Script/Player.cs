@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 
 	public float jumpVelocity;
 	public GameControlle gameControlle;
+	public AudioClip jumpSound;
+	public AudioClip deathSound;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
+			GetComponent<AudioSource> ().PlayOneShot(jumpSound, 1f);
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
@@ -47,6 +50,7 @@ public class Player : MonoBehaviour {
 
 	public void death () {
 		if (isAlive) {
+			GetComponent<AudioSource> ().PlayOneShot(deathSound, 1f);
 			isAlive = false;
 			animator.SetBool ("dead", true);
 

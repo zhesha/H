@@ -12,6 +12,14 @@ public class GameControlle : MonoBehaviour {
 	public GameObject scoreText;
 	public GameObject winText;
 
+	public AudioClip pointSound;
+	public AudioClip loseSound;
+	public AudioClip winSound;
+	public AudioClip musicSound;
+
+	public AudioSource musicSource;
+	public AudioSource soundSource;
+
 	private bool isStarted = false;
 	private int doneBlockCount = 0;
 
@@ -46,6 +54,9 @@ public class GameControlle : MonoBehaviour {
 		
 		float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
 		scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
+
+
+		musicSource.PlayOneShot(musicSound, 1f);
 	}
 
 	void Update () {
@@ -91,7 +102,9 @@ public class GameControlle : MonoBehaviour {
 	public void doneBlock () {
 		doneBlockCount++;
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
+		soundSource.PlayOneShot(pointSound, 1f);
 		if (deathBlockController.initialBlocksNumber <= doneBlockCount) {
+			soundSource.PlayOneShot(winSound, 1f);
 			winText.GetComponent<Renderer>().enabled = true;
 			background.stop();
 			parallax.stop();
