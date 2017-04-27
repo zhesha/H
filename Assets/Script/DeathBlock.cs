@@ -11,6 +11,7 @@ public class DeathBlock : MonoBehaviour {
 	public GameControlle gameControlle;
 
 	private bool isDone = false;
+	private float shiftSize = 1.2f;
 
 	// Update is called once per frame
 	void Update () {
@@ -31,11 +32,11 @@ public class DeathBlock : MonoBehaviour {
 	}
 
 	bool triggerCondition () {
-		if (type == 4 && transform.position.x - player.transform.position.x < 2f) {
+		if (type == 4 && transform.position.x - player.transform.position.x < 2.5f) {
 			return true;
 		}
 
-		if (transform.position.x - player.transform.position.x < 1) {
+		if (transform.position.x - player.transform.position.x < 2) {
 			return true;
 		}
 		return false;
@@ -48,40 +49,41 @@ public class DeathBlock : MonoBehaviour {
 		}
 		if (type == 2) {
 			type = 0;
-			transform.position = transform.position + Vector3.up * 0.5f;
+			transform.position = transform.position + Vector3.up * shiftSize;
 		}
 		if (type == 3) {
 			type = 0;
-			transform.position = transform.position + Vector3.down * 0.5f;
+			transform.position = transform.position + Vector3.down * shiftSize;
 		}
 		if (type == 4) {
 			type = 0;
-			transform.position = transform.position + Vector3.left * 0.5f;
+			Debug.logger.Log (123);
+			transform.position = transform.position + Vector3.left * shiftSize;
 		}
 		if (type == 5) {
 			type = 0;
-			transform.position = transform.position + Vector3.right * 0.5f;
+			transform.position = transform.position + Vector3.right * shiftSize;
 		}
 		if (type == 6) {
 			type = 0;
 		}
 		if (type == 7) {
 			type = 0;
-			transform.position = transform.position + Vector3.up * 0.5f;
+			transform.position = transform.position + Vector3.up * shiftSize;
 		}
 		if (type == 8) {
 			type = 2;
-			transform.position = transform.position + Vector3.right * 0.5f;
+			transform.position = transform.position + Vector3.right * shiftSize;
 		}
 	}
 
 	public void setType (int initType) {
 		type = initType;
 		if (initType == 3) {
-			transform.position = transform.position + Vector3.up * 0.5f;
+			transform.position = transform.position + Vector3.up * shiftSize;
 		}
 		if (initType == 7) {
-			transform.position = transform.position + Vector3.down * 0.5f;
+			transform.position = transform.position + Vector3.down * shiftSize;
 		}
 	}
 

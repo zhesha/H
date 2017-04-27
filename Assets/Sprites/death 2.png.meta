@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: e65e80a411ac94a8ca70253d0f6a93ef
-timeCreated: 1482663696
+guid: d352856e567744184b9d494c208bd5df
+timeCreated: 1492716256
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: death_0
-    21300002: death_1
-    21300004: death_2
-    21300006: death_3
-    21300008: death_4
-    21300010: death_5
-    21300012: death_6
+    21300000: death 2_0
+    21300002: death 2_1
+    21300004: death 2_2
+    21300006: death 2_3
+    21300008: death 2_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,93 +58,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: death 2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 52
-        height: 51
+        width: 500
+        height: 506
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: death_1
+      name: death 2_1
       rect:
         serializedVersion: 2
-        x: 52
+        x: 500
         y: 0
-        width: 52
-        height: 51
+        width: 500
+        height: 506
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: death_2
+      name: death 2_2
       rect:
         serializedVersion: 2
-        x: 104
+        x: 1000
         y: 0
-        width: 52
-        height: 51
+        width: 500
+        height: 506
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: death_3
+      name: death 2_3
       rect:
         serializedVersion: 2
-        x: 156
+        x: 1500
         y: 0
-        width: 52
-        height: 51
+        width: 500
+        height: 506
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: death_4
+      name: death 2_4
       rect:
         serializedVersion: 2
-        x: 208
+        x: 2000
         y: 0
-        width: 52
-        height: 51
+        width: 500
+        height: 506
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: death_5
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 0
-        width: 52
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: death_6
-      rect:
-        serializedVersion: 2
-        x: 364
-        y: 0
-        width: 52
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

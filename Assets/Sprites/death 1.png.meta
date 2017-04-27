@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 8aedbd21977d942399167133fe201215
-timeCreated: 1481473721
+guid: 9e6dbf5de77414dc886719b076ccdcc6
+timeCreated: 1492714482
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: block_0
-    21300002: block_1
+    21300000: death 1_0
+    21300002: death 1_1
+    21300004: death 1_2
+    21300006: death 1_3
+    21300008: death 1_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,28 +58,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: block_0
+      name: death 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 41
-        height: 38
+        width: 500
+        height: 506
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: block_1
+      name: death 1_1
       rect:
         serializedVersion: 2
-        x: 41
+        x: 500
         y: 0
-        width: 41
-        height: 38
+        width: 500
+        height: 506
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: death 1_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: death 1_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: death 1_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

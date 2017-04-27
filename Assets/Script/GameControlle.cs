@@ -13,7 +13,6 @@ public class GameControlle : MonoBehaviour {
 	public GameObject winText;
 
 	public AudioClip pointSound;
-	public AudioClip loseSound;
 	public AudioClip winSound;
 	public AudioClip musicSound;
 
@@ -40,16 +39,16 @@ public class GameControlle : MonoBehaviour {
 		}
 		ground.transform.position += Vector3.down * (grounfSize + groundOffset);
 
-		float deathBlockSize = 0.2f;
+		float deathBlockSize = 0.5f;
 		deathBlockController.transform.position += Vector3.down * (groundOffset - deathBlockSize);
 		deathBlockController.transform.position += Vector3.right * (canvasWidth + deathBlockSize);
 
-		float playerSize = 0.3f;
-		float playerOffset = playerSize * 1.5f;
+		float playerSize = 1f;
+		float playerOffset = playerSize * 1f;
 		player.transform.position += Vector3.left * (canvasWidth - playerOffset);
 		player.transform.position += Vector3.down * (groundOffset - playerSize/2);
 		
-		float parallaxSize = 1.16f;
+		float parallaxSize = 3.09f;
 		parallax.transform.position += Vector3.down * (groundOffset - parallaxSize / 2);
 		
 		float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;

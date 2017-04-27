@@ -20,12 +20,14 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
+			animator.SetBool ("Run", false);
 			GetComponent<AudioSource> ().PlayOneShot(jumpSound, 1f);
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		animator.SetBool ("Run", true);
 		onGround = true;
 	}
 
@@ -34,11 +36,9 @@ public class Player : MonoBehaviour {
 	}
 
 	public void reset () {
-		animator.SetBool("dead", false);
-
-		int deathHash = Animator.StringToHash("DudeAnimation");
-		animator.SetTrigger (deathHash);
-
+		animator.SetBool ("Idle", false);
+		animator.SetBool ("Run", true);
+		animator.SetBool ("Death", false);
 		StartCoroutine (deferredReset ());
 	}
 
@@ -52,10 +52,8 @@ public class Player : MonoBehaviour {
 		if (isAlive) {
 			GetComponent<AudioSource> ().PlayOneShot(deathSound, 1f);
 			isAlive = false;
-			animator.SetBool ("dead", true);
-
-			int deathHash = Animator.StringToHash ("death");
-			animator.SetTrigger (deathHash);
+			Debug.logger.Log ("asd");
+			animator.SetBool ("Death", true);
 
 			gameControlle.gameOver ();
 		}
