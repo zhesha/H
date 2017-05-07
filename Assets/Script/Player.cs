@@ -52,7 +52,6 @@ public class Player : MonoBehaviour {
 		if (isAlive) {
 			GetComponent<AudioSource> ().PlayOneShot(deathSound, 1f);
 			isAlive = false;
-			Debug.logger.Log ("asd");
 			animator.SetBool ("Death", true);
 
 			gameControlle.gameOver ();

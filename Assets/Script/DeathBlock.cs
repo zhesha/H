@@ -57,7 +57,6 @@ public class DeathBlock : MonoBehaviour {
 		}
 		if (type == 4) {
 			type = 0;
-			Debug.logger.Log (123);
 			transform.position = transform.position + Vector3.left * shiftSize;
 		}
 		if (type == 5) {
