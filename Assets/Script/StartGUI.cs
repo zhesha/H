@@ -8,7 +8,7 @@ public class StartGUI : ScrollBG {
 	private IEnumerator stopCoroutine;
 
 	// Use this for initialization
-	public void init () {
+	new public void init () {
 		base.init ();
 		stopCoroutine = deferredStop ();
 		StartCoroutine (stopCoroutine);

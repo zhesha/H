@@ -47,7 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Script\DeathBlock.cs" />
      <Compile Include="Assets\Script\DeathBlockController.cs" />
+     <Compile Include="Assets\Script\Exit.cs" />
      <Compile Include="Assets\Script\GameControlle.cs" />
+     <Compile Include="Assets\Script\Obstacle.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\Progress.cs" />
      <Compile Include="Assets\Script\ScrollBG.cs" />

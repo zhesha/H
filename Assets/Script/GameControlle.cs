@@ -59,7 +59,6 @@ public class GameControlle : MonoBehaviour {
 		float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
 		scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
 
-
 		musicSource.PlayOneShot(musicSound, 1f);
 	}
 
@@ -67,12 +66,12 @@ public class GameControlle : MonoBehaviour {
 		if (!isStarted && (Input.GetButton("Jump") || Input.touchCount > 0)) {
 			Load();
 			isStarted = true;
-			doneBlockCount = 0;
+			doneBlockCount = checkpoint();
 			scoreText.GetComponent<TextMesh>().text = "Score: 0";
 			player.reset ();
 			background.init ();
 			parallax.init ();
-			deathBlockController.init ();
+			deathBlockController.init (checkpoint());
 			startText.init ();
 			startText.GetComponent<TextMesh>().text = "Tap to jump";
 		}
@@ -87,7 +86,7 @@ public class GameControlle : MonoBehaviour {
 		GameObject[] deathBlocks = GameObject.FindGameObjectsWithTag("deathBlock");
 
 		foreach (GameObject deathBlock in deathBlocks) {
-			DeathBlock db = (DeathBlock)deathBlock.GetComponent(typeof(DeathBlock));
+			Obstacle db = (Obstacle)deathBlock.GetComponent(typeof(Obstacle));
 			db.speed = 0;
 			Destroy (deathBlock, 1);
 		}
@@ -105,17 +104,34 @@ public class GameControlle : MonoBehaviour {
 		isStarted = false;
 	}
 
+	public void win () {
+		soundSource.PlayOneShot(winSound, 1f);
+		winText.GetComponent<Renderer>().enabled = true;
+		background.stop();
+		parallax.stop();
+		deathBlockController.stop ();
+		player.stop ();
+	}
+
 	public void doneBlock () {
+		
+		doneBlockCount++;
+		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
+		soundSource.PlayOneShot(pointSound, 1f);
+		deathBlockController.spawn();
+		Save();
+	}
+
+	public void doneExit () {
 		doneBlockCount++;
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
 		soundSource.PlayOneShot(pointSound, 1f);
 		Save();
+
 		if (deathBlockController.initialBlocksNumber <= doneBlockCount) {
-			soundSource.PlayOneShot(winSound, 1f);
-			winText.GetComponent<Renderer>().enabled = true;
-			background.stop();
-			parallax.stop();
-			deathBlockController.stop ();
+			win ();
+		} else {
+			deathBlockController.spawn ();
 		}
 	}
 
@@ -139,5 +155,16 @@ public class GameControlle : MonoBehaviour {
 	        return numVal;
 	    }
 	    return 0;
+	}
+
+	public int checkpoint() {
+		int hiscore = Load ();
+		if (hiscore >= 10) {
+			return 10;
+		}
+		if (hiscore >= 4) {
+			return 4;
+		}
+		return 0;
 	}
 }

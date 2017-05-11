@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 9e6dbf5de77414dc886719b076ccdcc6
-timeCreated: 1492714482
+guid: de4f1b3118a3448a2bf0cfe2b260b9cd
+timeCreated: 1494336722
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: death 1_0
-    21300002: death 1_1
-    21300004: death 1_2
-    21300006: death 1_3
-    21300008: death 1_4
+    21300000: exit_0
+    21300002: exit_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,65 +55,26 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death 1_0
+      name: exit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 506
+        width: 122.5
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: death 1_1
+      name: exit_1
       rect:
         serializedVersion: 2
-        x: 500
+        x: 122
         y: 0
-        width: 500
-        height: 506
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: death 1_2
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 500
-        height: 506
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: death 1_3
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 500
-        height: 506
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: death 1_4
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 500
-        height: 506
+        width: 122.5
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

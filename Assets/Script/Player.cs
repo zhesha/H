@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private Animator animator;
-	private bool onGround = false;
+	private bool onGround = true;
 	private bool isAlive = false;
 
 	public float jumpVelocity;
@@ -16,18 +16,21 @@ public class Player : MonoBehaviour {
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		animator.SetInteger ("trigger", 0);
 	}
 
 	void FixedUpdate () {
 		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
-			animator.SetBool ("Run", false);
+			animator.SetInteger ("trigger", 2);
 			GetComponent<AudioSource> ().PlayOneShot(jumpSound, 1f);
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		animator.SetBool ("Run", true);
+		if (onGround == false) {
+			animator.SetInteger ("trigger", 1);
+		}
 		onGround = true;
 	}
 
@@ -36,9 +39,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void reset () {
-		animator.SetBool ("Idle", false);
-		animator.SetBool ("Run", true);
-		animator.SetBool ("Death", false);
+		animator.SetInteger ("trigger", 1);
 		StartCoroutine (deferredReset ());
 	}
 
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour {
 		if (isAlive) {
 			GetComponent<AudioSource> ().PlayOneShot(deathSound, 1f);
 			isAlive = false;
-			animator.SetBool ("Death", true);
+			animator.SetInteger ("trigger", 3);
 
 			gameControlle.gameOver ();
 		}
@@ -60,5 +61,9 @@ public class Player : MonoBehaviour {
 
 	public float position () {
 		return transform.position.x;
+	}
+
+	public void stop () {
+		animator.SetInteger ("trigger", 0);
 	}
 }

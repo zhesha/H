@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 73e3d6ed90fc3480b9d3e0d2002d2340
-timeCreated: 1492935069
+guid: 5fc68c2ba571a4dd39d2a45ab82e8d82
+timeCreated: 1494243765
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: block 1_0
-    21300002: block 1_1
+    21300000: block_0
+    21300002: block_1
+    21300004: block_2
+    21300006: block_3
+    21300008: block_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,12 +58,25 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: block 1_0
+      name: block_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 119
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: block_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 120
         height: 120
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -68,12 +84,38 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: block 1_1
+      name: block_2
       rect:
         serializedVersion: 2
-        x: 118
+        x: 240
         y: 0
-        width: 122
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: block_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 4, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: block_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 120
         height: 120
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
