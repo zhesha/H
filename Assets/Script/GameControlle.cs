@@ -67,7 +67,7 @@ public class GameControlle : MonoBehaviour {
 			Load();
 			isStarted = true;
 			doneBlockCount = checkpoint();
-			scoreText.GetComponent<TextMesh>().text = "Score: 0";
+			scoreText.GetComponent<TextMesh>().text = "Score: " + checkpoint().ToString();
 			player.reset ();
 			background.init ();
 			parallax.init ();

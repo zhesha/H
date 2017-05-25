@@ -7,6 +7,7 @@ public class DeathBlock : Obstacle {
 	public int type = 0;
 
 	private float shiftSize = 1.2f;
+	private float leftShiftSize = 0.6f;
 
 	new void Update () {
 		base.Update();
@@ -17,7 +18,14 @@ public class DeathBlock : Obstacle {
 	}
 
 	bool triggerCondition () {
-		if (type == 4 && transform.position.x - player.transform.position.x < 2.5f) {
+		if ((type == 11 ||
+			type == 15 || 
+			type == 18) && transform.position.x - player.transform.position.x < 4f) {
+			return true;
+		}
+
+		if ((type == 12 ||
+			type == 16) && transform.position.x - player.transform.position.x < 5f) {
 			return true;
 		}
 
@@ -54,11 +62,44 @@ public class DeathBlock : Obstacle {
 		}
 		if (type == 8) {
 			type = 0;
-			transform.position = transform.position + Vector3.left * shiftSize;
+			transform.position = transform.position + Vector3.left * leftShiftSize;
 		}
 		if (type == 9) {
 			type = 0;
 			transform.position = transform.position + Vector3.right * shiftSize;
+		}
+			
+		if (type == 11) {
+			type = 6;
+			transform.position = transform.position + Vector3.up * shiftSize;
+		}
+		if (type == 12) {
+			type = 3;
+			transform.position = transform.position + Vector3.left * leftShiftSize;
+		}
+		if (type == 13) {
+			type = 0;
+			transform.position = transform.position + Vector3.up * shiftSize;
+		}
+		if (type == 14) {
+			type = 2;
+			transform.position = transform.position + Vector3.right * shiftSize;
+		}
+		if (type == 15) {
+			type = 3;
+			transform.position = transform.position + Vector3.down * shiftSize;
+		}
+		if (type == 16) {
+			type = 2;
+			transform.position = transform.position + Vector3.left * leftShiftSize;
+		}
+		if (type == 17) {
+			type = 6;
+			transform.position = transform.position + Vector3.right * shiftSize;
+		}
+		if (type == 18) {
+			type = 2;
+			transform.position = transform.position + Vector3.down * shiftSize;
 		}
 	}
 
@@ -66,6 +107,14 @@ public class DeathBlock : Obstacle {
 		type = initType;
 		if (initType == 6) {
 			transform.position = transform.position + Vector3.up * shiftSize;
+		}
+
+		if (initType == 15 || initType == 17 || initType == 18) {
+			transform.position = transform.position + Vector3.up * shiftSize;
+		}
+
+		if (initType == 13) {
+			transform.position = transform.position + Vector3.down * shiftSize;
 		}
 	}
 

@@ -30,7 +30,7 @@ public class DeathBlockController : MonoBehaviour {
 	}
 
 	public void spawn () {
-		if (currBlockType == 3 || currBlockType == 9) {
+		if (currBlockType == 3 || currBlockType == 9 || currBlockType == 18) {
 			spawnLevelExit ();
 		} else {
 			spawnBlock ();
