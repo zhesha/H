@@ -15,6 +15,7 @@ public class GameControlle : MonoBehaviour {
 	public Player player;
 	public DeathBlockController deathBlockController;
 	public GameObject scoreText;
+	public StartGUI highscore;
 	public GameObject winText;
 
 	public AudioClip pointSound;
@@ -59,6 +60,12 @@ public class GameControlle : MonoBehaviour {
 		float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
 		scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
 
+		float startTextHeight = startText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
+		float highscoreWidth = highscore.GetComponent<MeshRenderer> ().bounds.size.x;
+		highscore.transform.position += Vector3.down * (startTextHeight * 2f);
+		highscore.transform.position += Vector3.right * (canvasHeight / 1.05f - highscoreWidth);
+		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
+
 		musicSource.PlayOneShot(musicSound, 1f);
 	}
 
@@ -73,6 +80,7 @@ public class GameControlle : MonoBehaviour {
 			parallax.init ();
 			deathBlockController.init (checkpoint());
 			startText.init ();
+			highscore.init ();
 			startText.GetComponent<TextMesh>().text = "Tap to jump";
 		}
 	}
@@ -82,6 +90,9 @@ public class GameControlle : MonoBehaviour {
 		parallax.stop();
 		deathBlockController.stop ();
 		startText.reset ();
+		highscore.reset ();
+
+		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
 
 		GameObject[] deathBlocks = GameObject.FindGameObjectsWithTag("deathBlock");
 
