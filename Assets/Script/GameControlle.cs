@@ -178,4 +178,9 @@ public class GameControlle : MonoBehaviour {
 		}
 		return 0;
 	}
+
+	public void onMutePressed() {
+		//Debug.logger.Log(112);
+		musicSource.Stop ();
+	}
 }

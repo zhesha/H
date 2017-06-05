@@ -28,7 +28,7 @@ public class ScrollBG : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		if (currentSpeed != 0) {
 			float t = stopTime + Time.time - time;
 			float newPosition = Mathf.Repeat (t * speed, size);

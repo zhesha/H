@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 		animator.SetInteger ("trigger", IDLE);
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
 			animator.SetInteger ("trigger", JUMP);
 			GetComponent<AudioSource> ().PlayOneShot(jumpSound, 1f);
