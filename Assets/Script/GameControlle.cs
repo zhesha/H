@@ -75,6 +75,9 @@ public class GameControlle : MonoBehaviour {
 		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
 
 		musicSource.PlayOneShot(musicSound, 1f);
+		if (Load () == -1) {
+			Save ();
+		}
 	}
 
 	void Update () {
@@ -139,14 +142,14 @@ public class GameControlle : MonoBehaviour {
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
 		playAudio(pointSound);
 		deathBlockController.spawn();
-		Save();
+		processProgress();
 	}
 
 	public void doneExit () {
 		doneBlockCount++;
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
 		playAudio(pointSound);
-		Save();
+		processProgress();
 
 		if (deathBlockController.initialBlocksNumber <= doneBlockCount) {
 			win ();
@@ -155,14 +158,18 @@ public class GameControlle : MonoBehaviour {
 		}
 	}
 
-	public void Save() {
+	public void processProgress() {
 		if (doneBlockCount > Load()) {
-			Progress progress = new Progress(doneBlockCount.ToString());
-	    	BinaryFormatter bf = new BinaryFormatter();
-	    	FileStream file = File.Create (Application.persistentDataPath + "/save.gd");
-	    	bf.Serialize(file, progress);
-	    	file.Close();
+			Save ();
     	}
+	}
+
+	public void Save() {
+		Progress progress = new Progress(doneBlockCount.ToString());
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Create (Application.persistentDataPath + "/save.gd");
+		bf.Serialize(file, progress);
+		file.Close();
 	}
 
 	public int Load() {
@@ -174,7 +181,7 @@ public class GameControlle : MonoBehaviour {
 	        int numVal = Int32.Parse(progress.bestScore);
 	        return numVal;
 	    }
-	    return 0;
+	    return -1;
 	}
 
 	public int checkpoint() {
@@ -200,7 +207,11 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	public void onRestartPressed() {
-		
+		doneBlockCount = 0;
+		Save ();
+		scoreText.GetComponent<TextMesh>().text = "Score: " + 0;
+		highscore.GetComponent<TextMesh>().text = "Highscore: " + 0;
+		player.death ();
 	}
 
 	public void onInfoPressed() {
