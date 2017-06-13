@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour {
 	private int JUMP = 2;
 	private int DEATH = 3;
 
+	public bool isMute = false;
+
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
@@ -25,9 +28,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
-		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround) {
+		if (isAlive && (Input.GetButton("Jump") || Input.touchCount > 0) && onGround && EventSystem.current.currentSelectedGameObject == null) {
 			animator.SetInteger ("trigger", JUMP);
-			GetComponent<AudioSource> ().PlayOneShot(jumpSound, 1f);
+			playAudio(jumpSound);
 			rb.velocity = new Vector2 (0f, 1f) * jumpVelocity;
 		}
 	}
@@ -42,6 +45,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag != "ground") { return; }
+
 		onGround = false;
 	}
 
@@ -58,7 +63,7 @@ public class Player : MonoBehaviour {
 
 	public void death () {
 		if (isAlive) {
-			GetComponent<AudioSource> ().PlayOneShot(deathSound, 1f);
+			playAudio(deathSound);
 			isAlive = false;
 			animator.SetInteger ("trigger", DEATH);
 
@@ -72,5 +77,11 @@ public class Player : MonoBehaviour {
 
 	public void stop () {
 		animator.SetInteger ("trigger", IDLE);
+	}
+
+	public void playAudio(AudioClip sound) {
+		if (!isMute) {
+			GetComponent<AudioSource> ().PlayOneShot(sound, 1f);
+		}
 	}
 }

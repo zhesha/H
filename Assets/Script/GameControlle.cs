@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class GameControlle : MonoBehaviour {
 
@@ -17,6 +18,11 @@ public class GameControlle : MonoBehaviour {
 	public GameObject scoreText;
 	public StartGUI highscore;
 	public GameObject winText;
+
+	public GameObject muteButton;
+	public GameObject restartButton;
+	public GameObject pauseButton;
+	public GameObject infoButton;
 
 	public AudioClip pointSound;
 	public AudioClip winSound;
@@ -31,6 +37,8 @@ public class GameControlle : MonoBehaviour {
 	private float cameraSize = 5.4f;
 	private float canvasWidth = 1;
 	private float canvasHeight = 1;
+
+	private bool isMute = false;
 
 	private IEnumerator gameOverCoroutine;
 
@@ -70,7 +78,8 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!isStarted && (Input.GetButton("Jump") || Input.touchCount > 0)) {
+
+		if (!isStarted && (Input.GetButton("Jump") || Input.touchCount > 0) && EventSystem.current.currentSelectedGameObject == null) {
 			Load();
 			isStarted = true;
 			doneBlockCount = checkpoint();
@@ -116,7 +125,7 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	public void win () {
-		soundSource.PlayOneShot(winSound, 1f);
+		playAudio(winSound);
 		winText.GetComponent<Renderer>().enabled = true;
 		background.stop();
 		parallax.stop();
@@ -128,7 +137,7 @@ public class GameControlle : MonoBehaviour {
 		
 		doneBlockCount++;
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
-		soundSource.PlayOneShot(pointSound, 1f);
+		playAudio(pointSound);
 		deathBlockController.spawn();
 		Save();
 	}
@@ -136,7 +145,7 @@ public class GameControlle : MonoBehaviour {
 	public void doneExit () {
 		doneBlockCount++;
 		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
-		soundSource.PlayOneShot(pointSound, 1f);
+		playAudio(pointSound);
 		Save();
 
 		if (deathBlockController.initialBlocksNumber <= doneBlockCount) {
@@ -180,7 +189,27 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	public void onMutePressed() {
-		//Debug.logger.Log(112);
-		musicSource.Stop ();
+		if (isMute) {
+			musicSource.PlayOneShot(musicSound, 1f);
+			isMute = false;
+		} else {
+			musicSource.Stop ();
+			isMute = true;
+		}
+		player.isMute = isMute;
+	}
+
+	public void onRestartPressed() {
+		
+	}
+
+	public void onInfoPressed() {
+		
+	}
+
+	public void playAudio(AudioClip sound) {
+		if (!isMute) {
+			soundSource.PlayOneShot(sound, 1f);
+		}
 	}
 }
