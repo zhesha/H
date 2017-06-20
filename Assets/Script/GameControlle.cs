@@ -18,10 +18,10 @@ public class GameControlle : MonoBehaviour {
 	public GameObject scoreText;
 	public StartGUI highscore;
 	public GameObject winText;
+	public GameObject infoScreen;
 
 	public GameObject muteButton;
 	public GameObject restartButton;
-	public GameObject pauseButton;
 	public GameObject infoButton;
 
 	public AudioClip pointSound;
@@ -215,12 +215,22 @@ public class GameControlle : MonoBehaviour {
 	}
 
 	public void onInfoPressed() {
-		
+		infoScreen.SetActive (true);
 	}
 
 	public void playAudio(AudioClip sound) {
 		if (!isMute) {
 			soundSource.PlayOneShot(sound, 1f);
 		}
+	}
+
+	public void closeInfo() {
+		infoScreen.SetActive (false);
+	}
+
+	public void sendEmail() {
+		string email = "savzhe@gmail.com";
+		string subject = "Subject";
+		Application.OpenURL("mailto:" + email + "?subject=" + subject);
 	}
 }
