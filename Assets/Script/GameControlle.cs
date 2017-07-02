@@ -19,10 +19,7 @@ public class GameControlle : MonoBehaviour {
 	public StartGUI highscore;
 	public GameObject winText;
 	public GameObject infoScreen;
-
-	public GameObject muteButton;
-	public GameObject restartButton;
-	public GameObject infoButton;
+	public GameObject confirmationScreen;
 
 	public AudioClip pointSound;
 	public AudioClip winSound;
@@ -206,7 +203,16 @@ public class GameControlle : MonoBehaviour {
 		player.isMute = isMute;
 	}
 
+	public void onAskRestart() {
+		confirmationScreen.SetActive (true);
+	}
+
+	public void onContinue() {
+		confirmationScreen.SetActive (false);
+	}
+
 	public void onRestartPressed() {
+		confirmationScreen.SetActive (false);
 		doneBlockCount = 0;
 		Save ();
 		scoreText.GetComponent<TextMesh>().text = "Score: " + 0;
