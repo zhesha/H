@@ -51,8 +51,9 @@ public class GameControlle : MonoBehaviour {
 		ground.transform.position += Vector3.down * (grounfSize + groundOffset);
 
 		float deathBlockSize = 0.5f;
+		float deathBlockOffset = 1.5f;
 		deathBlockController.transform.position += Vector3.down * (groundOffset - deathBlockSize);
-		deathBlockController.transform.position += Vector3.right * (canvasWidth + deathBlockSize);
+		deathBlockController.transform.position += Vector3.right * (canvasWidth + deathBlockOffset);
 
 		float playerSize = 1f;
 		float playerOffset = playerSize * 1f;
@@ -217,6 +218,7 @@ public class GameControlle : MonoBehaviour {
 		Save ();
 		scoreText.GetComponent<TextMesh>().text = "Score: " + 0;
 		highscore.GetComponent<TextMesh>().text = "Highscore: " + 0;
+		winText.GetComponent<Renderer>().enabled = false;
 		player.death ();
 	}
 
