@@ -69,8 +69,11 @@ public class GameControlle : MonoBehaviour {
 		float startTextHeight = startText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
 		float highscoreWidth = highscore.GetComponent<MeshRenderer> ().bounds.size.x;
 		highscore.transform.position += Vector3.down * (startTextHeight * 2f);
-		highscore.transform.position += Vector3.right * (canvasHeight / 1.05f - highscoreWidth);
+		highscore.transform.position += Vector3.right * ((canvasHeight / 1.5f) - highscoreWidth);
 		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
+
+		float backgroundWidth = 2048f / 2 / 130;
+		background.transform.position += Vector3.right * (backgroundWidth - canvasWidth);
 
 		musicSource.PlayOneShot(musicSound, 1f);
 		if (Load () == -1) {
