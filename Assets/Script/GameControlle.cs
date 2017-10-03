@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameControlle : MonoBehaviour {
 
@@ -27,6 +28,10 @@ public class GameControlle : MonoBehaviour {
 
 	public AudioSource musicSource;
 	public AudioSource soundSource;
+
+	public Button muteButton;
+	public Sprite muteOnSprite;
+	public Sprite muteOffSprite;
 
 	private bool isStarted = false;
 	private int doneBlockCount = 0;
@@ -200,9 +205,11 @@ public class GameControlle : MonoBehaviour {
 		if (isMute) {
 			musicSource.PlayOneShot(musicSound, 1f);
 			isMute = false;
+			muteButton.image.sprite = muteOnSprite;
 		} else {
 			musicSource.Stop ();
 			isMute = true;
+			muteButton.image.sprite = muteOffSprite;
 		}
 		player.isMute = isMute;
 	}
