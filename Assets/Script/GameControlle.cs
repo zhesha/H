@@ -16,6 +16,7 @@ public class GameControlle : MonoBehaviour {
 	public GameObject ground;
 	public Player player;
 	public DeathBlockController deathBlockController;
+	public GameObject scoreWrapper;
 	public GameObject scoreText;
 	public StartGUI highscore;
 	public GameObject winText;
@@ -68,8 +69,10 @@ public class GameControlle : MonoBehaviour {
 		float parallaxSize = 3.09f;
 		parallax.transform.position += Vector3.down * (groundOffset - parallaxSize / 2);
 		
-		float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
-		scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
+		//float scoreHeight = scoreText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
+		float scoreHeight = scoreWrapper.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+		//scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
+		scoreWrapper.transform.position += Vector3.up * (canvasHeight - scoreHeight);
 
 		float startTextHeight = startText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
 		float highscoreWidth = highscore.GetComponent<MeshRenderer> ().bounds.size.x;
@@ -92,7 +95,7 @@ public class GameControlle : MonoBehaviour {
 			Load();
 			isStarted = true;
 			doneBlockCount = checkpoint();
-			scoreText.GetComponent<TextMesh>().text = "Score: " + checkpoint().ToString();
+			scoreText.GetComponent<TextMesh>().text = checkpoint().ToString();
 			player.reset ();
 			background.init ();
 			parallax.init ();
@@ -145,7 +148,7 @@ public class GameControlle : MonoBehaviour {
 	public void doneBlock () {
 		
 		doneBlockCount++;
-		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
+		scoreText.GetComponent<TextMesh>().text = doneBlockCount.ToString();
 		playAudio(pointSound);
 		deathBlockController.spawn();
 		processProgress();
@@ -153,7 +156,7 @@ public class GameControlle : MonoBehaviour {
 
 	public void doneExit () {
 		doneBlockCount++;
-		scoreText.GetComponent<TextMesh>().text = "Score: "+doneBlockCount.ToString();
+		scoreText.GetComponent<TextMesh>().text = doneBlockCount.ToString();
 		playAudio(pointSound);
 		processProgress();
 
@@ -226,7 +229,7 @@ public class GameControlle : MonoBehaviour {
 		confirmationScreen.SetActive (false);
 		doneBlockCount = 0;
 		Save ();
-		scoreText.GetComponent<TextMesh>().text = "Score: " + 0;
+		scoreText.GetComponent<TextMesh>().text = 0.ToString();
 		highscore.GetComponent<TextMesh>().text = "Highscore: " + 0;
 		winText.GetComponent<Renderer>().enabled = false;
 		player.death ();
