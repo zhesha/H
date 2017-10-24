@@ -19,6 +19,7 @@ public class GameControlle : MonoBehaviour {
 	public GameObject scoreWrapper;
 	public GameObject scoreText;
 	public StartGUI highscore;
+	public StartGUI highscoreWrapper;
 	public GameObject winText;
 	public GameObject infoScreen;
 	public GameObject confirmationScreen;
@@ -74,11 +75,11 @@ public class GameControlle : MonoBehaviour {
 		//scoreText.transform.position += Vector3.up * (canvasHeight - scoreHeight);
 		scoreWrapper.transform.position += Vector3.up * (canvasHeight - scoreHeight);
 
-		float startTextHeight = startText.GetComponent<MeshRenderer> ().bounds.size.y / 2;
-		float highscoreWidth = highscore.GetComponent<MeshRenderer> ().bounds.size.x;
-		highscore.transform.position += Vector3.down * (startTextHeight * 2f);
-		highscore.transform.position += Vector3.right * ((canvasHeight / 1.5f) - highscoreWidth);
-		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
+		float startTextHeight = startText.GetComponent<SpriteRenderer> ().bounds.size.y / 2;
+		float highscoreWidth = highscoreWrapper.GetComponent<SpriteRenderer> ().bounds.size.x;
+		highscoreWrapper.transform.position += Vector3.down * (startTextHeight * 2f);
+		highscoreWrapper.transform.position += Vector3.right * ((canvasHeight / 1.5f) - highscoreWidth);
+		highscore.GetComponent<TextMesh>().text = Load().ToString();
 
 		float backgroundWidth = 2048f / 2 / 130;
 		background.transform.position += Vector3.right * (backgroundWidth - canvasWidth);
@@ -101,8 +102,8 @@ public class GameControlle : MonoBehaviour {
 			parallax.init ();
 			deathBlockController.init (checkpoint());
 			startText.init ();
-			highscore.init ();
-			startText.GetComponent<TextMesh>().text = "Tap to jump";
+			highscoreWrapper.init ();
+			//startText.GetComponent<TextMesh>().text = "Tap to jump";
 		}
 	}
 
@@ -111,9 +112,9 @@ public class GameControlle : MonoBehaviour {
 		parallax.stop();
 		deathBlockController.stop ();
 		startText.reset ();
-		highscore.reset ();
+		highscoreWrapper.reset ();
 
-		highscore.GetComponent<TextMesh>().text = "Highscore: " + Load().ToString();
+		highscore.GetComponent<TextMesh>().text = Load().ToString();
 
 		GameObject[] deathBlocks = GameObject.FindGameObjectsWithTag("deathBlock");
 
@@ -138,7 +139,7 @@ public class GameControlle : MonoBehaviour {
 
 	public void win () {
 		playAudio(winSound);
-		winText.GetComponent<Renderer>().enabled = true;
+		winText.GetComponent<SpriteRenderer>().enabled = true;
 		background.stop();
 		parallax.stop();
 		deathBlockController.stop ();
@@ -230,8 +231,8 @@ public class GameControlle : MonoBehaviour {
 		doneBlockCount = 0;
 		Save ();
 		scoreText.GetComponent<TextMesh>().text = 0.ToString();
-		highscore.GetComponent<TextMesh>().text = "Highscore: " + 0;
-		winText.GetComponent<Renderer>().enabled = false;
+		highscore.GetComponent<TextMesh>().text = 0.ToString();
+		winText.GetComponent<SpriteRenderer>().enabled = false;
 		player.death ();
 	}
 
