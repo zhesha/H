@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: de4f1b3118a3448a2bf0cfe2b260b9cd
-timeCreated: 1494336722
+timeCreated: 1509028958
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: exit_0
     21300002: exit_1
+    21300004: exit_2
+    21300006: exit_3
+    21300008: exit_4
+    21300010: exit_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,8 +64,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 122.5
-        height: 215
+        width: 124
+        height: 238
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -71,10 +75,62 @@ TextureImporter:
       name: exit_1
       rect:
         serializedVersion: 2
-        x: 122
+        x: 124
         y: 0
-        width: 122.5
-        height: 215
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: exit_2
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 0
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: exit_3
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 0
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: exit_4
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 0
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: exit_5
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 0
+        width: 124
+        height: 238
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
