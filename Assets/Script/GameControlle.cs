@@ -79,7 +79,11 @@ public class GameControlle : MonoBehaviour {
 		float highscoreWidth = highscoreWrapper.GetComponent<SpriteRenderer> ().bounds.size.x;
 		highscoreWrapper.transform.position += Vector3.down * (startTextHeight * 2f);
 		highscoreWrapper.transform.position += Vector3.right * ((canvasHeight / 1.5f) - highscoreWidth);
-		highscore.GetComponent<TextMesh>().text = Load().ToString();
+		if (Load () < 0) {
+			highscore.GetComponent<TextMesh> ().text = 0.ToString ();
+		} else {
+			highscore.GetComponent<TextMesh> ().text = Load ().ToString ();
+		}
 
 		float backgroundWidth = 2048f / 2 / 130;
 		background.transform.position += Vector3.right * (backgroundWidth - canvasWidth);
@@ -90,7 +94,7 @@ public class GameControlle : MonoBehaviour {
 		}
 	}
 
-	void Update () {
+	void FixedUpdate () {
 
 		if (!isStarted && (Input.GetButton("Jump") || Input.touchCount > 0) && EventSystem.current.currentSelectedGameObject == null) {
 			Load();

@@ -9,8 +9,8 @@ public class DeathBlock : Obstacle {
 	private float shiftSize = 1.2f;
 	private float leftShiftSize = 0.6f;
 
-	new void Update () {
-		base.Update();
+	new void FixedUpdate () {
+		base.FixedUpdate();
 		if (type != 0 && triggerCondition()) {
 			action ();
 		}

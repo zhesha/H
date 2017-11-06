@@ -13,7 +13,7 @@ public class Obstacle : MonoBehaviour {
 		Destroy (gameObject, lifetime);
 	}
 
-	public void Update () {
+	public void FixedUpdate () {
 		transform.position = transform.position + Vector3.left * speed;
 		checkDone ();
 	}
